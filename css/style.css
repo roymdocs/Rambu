@@ -136,10 +136,10 @@ nav a:hover {
 }
 
 /* =========================================
-   NEW: FARMER'S CORNER CONTAINER & BUTTONS
+   NEW: USER'S CORNER CONTAINER & BUTTONS
    ========================================= */
 /* Container setup for side-by-side image and layout split */
-.farmer-corner-container {
+.user-corner-container {
   display: flex;
   flex-direction: column;      /* Default mobile behavior is stacked stacked */
   gap: 35px;
@@ -151,12 +151,12 @@ nav a:hover {
 }
 
 /* Image wrapper constraints */
-.farmer-image-wrapper {
+.user-image-wrapper {
   width: 100%;
   max-width: 480px;            /* Keeps the profile content photo bounded beautifully */
 }
 
-.farmer-image-wrapper img {
+.user-image-wrapper img {
   width: 100%;
   height: auto;
   display: block;
@@ -259,11 +259,11 @@ footer {
    ========================================= */
 /* Added: Intermediate desktop/tablet split view rule logic */
 @media (min-width: 768px) {
-  .farmer-corner-container {
+  .user-corner-container {
     flex-direction: row;       /* Flips side-by-side layout on desktop */
     align-items: flex-start;
   }
-  .farmer-image-wrapper {
+  .user-image-wrapper {
     flex: 0 0 35%;             /* Scales picture safely to 35% layout row space */
   }
 }
