@@ -33,11 +33,10 @@
       z-index: 10;                 /* Ensures the topbar stays above other content like the header image */
     }
 
-    /* Brand container holds the logo and potential site name */
+    /* Brand container holds the logo image */
     .brand {
       display: flex;               /* Aligns elements inside horizontally */
       align-items: center;         /* Centers elements inside vertically */
-      gap: 12px;                   /* Adds space between the logo image and any side text */
     }
 
     /* Styling for the new image logo */
@@ -119,14 +118,15 @@
     .header-image {
       width: 100%;                 /* Full width of the page */
       height: 300px;               /* [EXPERIMENT] Change 300px to 200px or 400px to adjust header height */
-      background: url("header_rambu.png") center/cover no-repeat; /* [CRITICAL] Set your image path here */
+      /* [CRITICAL] Set your image path here. Note the extension is .jpg */
+      background: url("header_rambu.jpg") center/cover no-repeat; 
     }
 
     /* Container for the main page content */
     .middle {
       padding: 40px 20px;          /* Space inside the content area (top/bottom, left/right) */
       max-width: 900px;            /* [EXPERIMENT] Change 900px to limit how wide the content area can get */
-      margin: auto;                /* Centers the content area horizontally on the page */
+      margin: 40px auto;           /* Centers the content area horizontally and adds top/bottom margin */
       background: white;           /* Clean white background for the text area */
       border-radius: 8px;          /* [EXPERIMENT] Add border-radius for rounded content box corners */
       box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Adds a very subtle shadow for elevation */
@@ -189,7 +189,7 @@
         border-radius: 0;          /* Removes rounded corners on mobile full width */
       }
       
-      /* Mobile dropdown is hidden until clicked on mobile (often requires JavaScript, but this keeps it simple CSS hover) */
+      /* Mobile dropdown is hidden until clicked on mobile (keeps it simple CSS hover) */
       .dropdown:hover .dropdown-content {
         display: block; 
       }
@@ -204,9 +204,10 @@
   <div class="topbar">
     <!-- Brand area: contains the site logo image -->
     <div class="brand">
-      <!-- Image Logo with descriptive ALT text for accessibility and SEO -->
+      <!-- Image Logo with descriptive ALT text for accessibility -->
       <a href="#home">
-        <img src="https://raw.githubusercontent.com/roymdocs/Rambu/main/logo.png" alt="RambuConnect Logo" class="logo-img">
+        <!-- [CRITICAL] Image path. Note capitalization and .png extension -->
+        <img src="RambuConnectLogo.png" alt="RambuConnect Logo" class="logo-img">
       </a>
     </div>
 
@@ -250,7 +251,7 @@
     <h1>Welcome to RAMBUCONNECT</h1>
     
     <!-- Paragraphs describing the project/content -->
-    <p>This is a simple school-level website made using HTML and CSS only. I have integrated the new transparent logo image in the topbar and optimized the layout.</p>
+    <p>This is a simple school-level website made using HTML and CSS only. We have integrated the local logo image and header image, linking them with relative paths.</p>
     <p>All CSS properties have detailed comments so you can easily change values like colors, spacing, and sizes to experiment for your project. You can write your project details, school information, or any basic content here.</p>
   </section>
 
