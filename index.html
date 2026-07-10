@@ -19,10 +19,9 @@
     }
 
     /* =========================================
-       TOPBAR & LOGO SECTION (GRADIENT RESTORED)
+       TOPBAR & LOGO SECTION
        ========================================= */
     .topbar {
-      /* [RESTORED] Your original green gradient background */
       background: linear-gradient(to right, white 0%, white 55%, #1f8f3a 100%);
       padding: 15px 20px;          /* Adds space inside the topbar (top/bottom, left/right) */
       display: flex;               /* Uses Flexbox layout */
@@ -62,136 +61,195 @@
     /* Styling for each link in the navigation menu */
     nav a {
       text-decoration: none;       /* Removes the default underline from links */
-      color: #222;                 /* [EXPERIMENT] Change color code for default link color */
+      color: #222;                 /* Default link color */
       font-weight: bold;           /* Makes the menu text bold */
     }
 
     /* Hover effect for the menu links */
     nav a:hover {
-      color: #1f8f3a;              /* [EXPERIMENT] Change this to make links turn red or blue on hover */
+      color: #1f8f3a;              /* Turn green on hover */
     }
 
     /* =========================================
        DROPDOWN MENU SECTION
        ========================================= */
-    /* Container for the 'Join us!' dropdown link and content */
     .dropdown {
-      position: relative;          /* Allows the dropdown-content to be positioned absolutely relative to this */
-      display: inline-block;       /* Keeps the dropdown element in line with other menu items */
+      position: relative;          
+      display: inline-block;       
     }
 
-    /* Styling for the dropdown content box (initially hidden) */
     .dropdown-content {
-      display: none;               /* CRITICAL: Hides the dropdown content by default */
-      position: absolute;          /* Places the box precisely relative to the .dropdown container */
-      top: 100%;                   /* Positions the box directly below the 'Join us!' link */
-      right: 0;                    /* Aligns the right edge of the box with the right edge of the link */
-      background: white;           /* Sets a clean white background for the dropdown menu */
-      min-width: 160px;            /* Ensures the dropdown box is at least 160px wide */
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Adds a subtle shadow for depth */
-      z-index: 1;                  /* Ensures the dropdown appears above other content */
-      border-radius: 6px;          /* Rounds the corners of the dropdown box */
-      overflow: hidden;            /* Ensures the hover background color respects the rounded corners */
+      display: none;               
+      position: absolute;          
+      top: 100%;                   
+      right: 0;                    
+      background: white;           
+      min-width: 160px;            
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+      z-index: 1;                  
+      border-radius: 6px;          
+      overflow: hidden;            
     }
 
-    /* Styling for links inside the dropdown menu */
     .dropdown-content a {
-      display: block;              /* Makes each link take up the full width of the box */
-      padding: 10px 14px;          /* Adds space inside each dropdown item */
-      margin: 0;                   /* Removes default link margins */
-      color: #222;                 /* Default text color for dropdown links */
-      font-weight: normal;         /* Dropdown items use normal weight text */
+      display: block;              
+      padding: 10px 14px;          
+      margin: 0;                   
+      color: #222;                 
+      font-weight: normal;         
     }
 
-    /* Hover effect for links inside the dropdown menu */
     .dropdown-content a:hover {
-      background: #f0f0f0;         /* [EXPERIMENT] Change this to match the green theme on hover */
-      color: #1f8f3a;              /* Change text color on hover */
+      background: #f0f0f0;         
+      color: #1f8f3a;              
     }
 
-    /* Shows the dropdown content when the parent .dropdown is hovered */
     .dropdown:hover .dropdown-content {
-      display: block;              /* CRITICAL: Shows the hidden dropdown content */
+      display: block;              
     }
 
     /* =========================================
-       HEADER & MIDDLE CONTENT SECTION
+       HEADER IMAGE SECTION
        ========================================= */
-    /* Container for the large header/hero image */
     .header-image {
-      width: 100%;                 /* Full width of the page */
-      height: 300px;               /* [EXPERIMENT] Change height to adjust header size */
-      background: url("https://raw.githubusercontent.com/roymdocs/Rambu/main/header_rambu.jpg") center/cover no-repeat; /* Local image filename */
+      width: 100%;                 
+      height: 300px;               
+      background: url("header_rambu.jpg") center/cover no-repeat; 
     }
 
-    /* Container for the main page content */
+    /* =========================================
+       NEW MAIN CONTENT STYLES (FULL WIDTH & COLUMNS)
+       ========================================= */
+    /* Container for the main page content - Changed to stretch Full Width */
     .middle {
-      padding: 40px 20px;          /* Space inside the content area (top/bottom, left/right) */
-      max-width: 900px;            /* Limit how wide the content area can get */
-      margin: 40px auto;           /* Centers the content area horizontally and adds top/bottom margin */
+      padding: 50px 20px;          /* Space inside the content area */
+      width: 100%;                 /* Takes full width of the screen */
+      box-sizing: border-box;      /* Ensures padding doesn't push width over 100% */
       background: white;           /* Clean white background for the text area */
-      border-radius: 8px;          /* Add border-radius for rounded content box corners */
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Adds a very subtle shadow for elevation */
+      text-align: center;          /* Centers the main headline text */
     }
 
-    /* Styling for the main heading (H1) */
+    /* Main welcome headline styling */
     .middle h1 {
-      color: #1f8f3a;              /* Heading color */
+      color: #1f8f3a;              
+      font-size: 32px;
+      margin-bottom: 15px;
     }
 
-    /* Styling for paragraphs (P) in the content area */
-    .middle p {
-      line-height: 1.6;            /* Adjust spacing between text lines */
+    /* Main introductory paragraph text layout */
+    .intro-text {
+      max-width: 800px;            /* Keeps the reading text line block at a comfortable length */
+      margin: 0 auto 50px auto;    /* Centers the paragraph and pushes the 4-columns down */
+      line-height: 1.7;            /* Increases readability spacing between lines */
+      font-size: 17px;
+      color: #444;
+    }
+
+    /* Wrapper layout that holds the 4 responsive columns side-by-side */
+    .column-container {
+      display: flex;               /* Uses flexbox to place columns horizontally */
+      justify-content: center;     /* Centers columns inside the full-width layout */
+      gap: 25px;                   /* Spacing between individual columns */
+      max-width: 1300px;           /* Gives the column row a maximum outer boundary grid */
+      margin: 0 auto;              /* Centers the column row container grid on screen */
+    }
+
+    /* Styling for each individual item block inside the 4 columns */
+    .column-box {
+      flex: 1;                     /* Forces all 4 columns to be exactly equal in width */
+      background: #f9f9f9;         /* Very light gray tint background for structural contrast */
+      padding: 25px 15px;          /* Padding spacing inside the column box border margins */
+      border-radius: 8px;          /* Smooth rounded edge design */
+      border-top: 4px solid #1f8f3a; /* Creative top brand strip accents on each category */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Soft structural framing elevation layer shadow */
+    }
+
+    /* Column Header text titles */
+    .column-box h3 {
+      color: #1f8f3a;
+      font-size: 20px;
+      margin: 15px 0 10px 0;
+    }
+
+    /* Summary descriptors below column headers */
+    .column-box p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* [CRITICAL] Image formatting inside the columns to keep them uniform */
+    .column-img {
+      width: 100%;                 /* Dynamically stretches image to safely fit the box grid width */
+      height: 160px;               /* [EXPERIMENT] Change height value to make grid cards shorter or taller */
+      object-fit: cover;           /* Auto crops images proportionally without squash distortion */
+      border-radius: 4px;          /* Rounds photo frame sharp edges layout */
+      background: #ddd;            /* Serves as a neutral placeholder fill block color if file is missing */
     }
 
     /* =========================================
        FOOTER SECTION
        ========================================= */
     footer {
-      background: #222;            /* Dark gray background for the footer */
-      color: white;                /* White text color for contrast */
-      text-align: center;          /* Centers the footer text */
-      padding: 18px;               /* Space inside the footer */
-      font-size: 16px;             /* Footer text size */
-      margin-top: 40px;            /* Space above the footer */
+      background: #222;            
+      color: white;                
+      text-align: center;          
+      padding: 18px;               
+      font-size: 16px;             
     }
 
     /* =========================================
        RESPONSIVE DESIGN (Media Queries)
        ========================================= */
-    /* These styles apply only when the screen width is 700px or less (e.g., mobile phones) */
+    @media (max-width: 900px) {
+      /* Break column flex array down on standard tablet screen layouts */
+      .column-container {
+        flex-wrap: wrap;           /* Allows column blocks to overflow rows grid layout wrap properties */
+      }
+      .column-box {
+        flex: 0 0 45%;             /* Forms clean 2x2 grid configurations on intermediate interfaces */
+      }
+    }
+
     @media (max-width: 700px) {
       .topbar {
-        flex-direction: column;    /* Stacks the logo container cleanly above the menu */
-        align-items: center;       /* Centers all stacked elements vertically on small screens */
-        padding: 10px 15px;        /* Reduces padding slightly on mobile */
+        flex-direction: column;    
+        align-items: center;       
+        padding: 10px 15px;        
       }
 
       nav {
-        /* CRITICAL RESET FOR MOBILE: Turns off absolute positioning so links wrap naturally */
         position: static;          
         transform: none;           
-        margin-top: 12px;          /* Adds comfortable spacing between the logo and links */
-        gap: 14px;                 /* Reduces spacing between menu links on small mobile layout */
-        width: 100%;               /* Spans full width */
-        justify-content: center;   /* Keeps links centered inside the menu row on mobile */
+        margin-top: 12px;          
+        gap: 14px;                 
+        width: 100%;               
+        justify-content: center;   
       }
       
       .logo-img {
-        height: 36px;              /* Scales the logo size down on small mobile screens */
+        height: 36px;              
       }
 
       .header-image {
-        height: 180px;             /* Reduces header image height on small screens */
+        height: 180px;             
       }
 
-      /* Adjusts dropdown content positioning for mobile layout */
+      /* Stacks columns vertically into 1 uniform single vertical scroll stream on standard mobile phone widths */
+      .column-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .column-box {
+        flex: 1;                   /* Spans full cross widths in single list array blocks */
+      }
+
       .dropdown-content {
         right: auto;               
         left: 0;                   
-        position: static;          /* Pushes mobile dropdown below the menu link cleanly */
-        width: 100%;               /* Makes dropdown full width in vertical mobile list */
-        box-shadow: none;          /* Removes shadow for cleaner mobile view */
+        position: static;          
+        width: 100%;               
+        box-shadow: none;          
         border-radius: 0;          
       }
     }
@@ -203,28 +261,20 @@
        TOPBAR SECTION (Logo & Navigation)
        ========================================= -->
   <div class="topbar">
-    <!-- Brand area: contains the site logo image -->
     <div class="brand">
       <a href="#home">
-        <!-- Local image source matching the filename exact layout case -->
-        <img src="https://raw.githubusercontent.com/roymdocs/Rambu/main/RambuConnectLogo.png" alt="RambuConnect Logo" class="logo-img">
+        <img src="RambuConnectLogo.png" alt="RambuConnect Logo" class="logo-img">
       </a>
     </div>
 
-    <!-- Navigation area: contains menu links and dropdowns (CENTERED ON DESKTOP) -->
     <nav>
-      <!-- Basic navigation links -->
       <a href="#home">Home</a>
       <a href="#about">About us</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact us</a>
 
-      <!-- Dropdown menu structure -->
       <div class="dropdown">
-        <!-- The link that activates the dropdown on hover -->
         <a href="#join">Join us!</a>
-        
-        <!-- The hidden dropdown content box -->
         <div class="dropdown-content">
           <a href="Farmers.html">Farmers</a>
           <a href="Buyers.html">Buyers</a>
@@ -238,16 +288,55 @@
   <!-- =========================================
        HERO HEADER SECTION
        ========================================= -->
-  <!-- A container to hold the large header image (defined in CSS layout) -->
   <div class="header-image"></div>
 
   <!-- =========================================
-       MAIN CONTENT SECTION
+       MAIN CONTENT SECTION (FULL WIDTH & COLUMNS)
        ========================================= -->
   <section class="middle">
     <h1>Welcome to RAMBUCONNECT</h1>
-    <p>This is a simple school-level website made using HTML and CSS only. I have integrated the local logo image, restored the top gradient styling, and optimized the configuration to align the navigation menu perfectly center.</p>
-    <p>All CSS properties have detailed comments so you can easily change values like colors, spacing, and sizes to experiment for your project. You can write your project details, school information, or any basic content here.</p>
+    
+    <!-- 75-Word Introduction Paragraph explaining why they should join -->
+    <p class="intro-text">
+      RambuConnect is a specialized digital ecosystem built to empower the entire Rambutan cultivation landscape. By bridging the gap between rural producers and global commercial channels, we eliminate unnecessary middlemen to maximize profitability. Our integrated network provides businesses with direct access to certified high-yield planting stocks, reliable trade transactions, premium farming supplies, and modern logistics solutions. Join our growing community today to transform your local agricultural workflows into scalable, sustainable market growth.
+    </p>
+
+    <!-- 4 Responsive Column Grid Layout -->
+    <div class="column-container">
+      
+      <!-- Column 1: Rambutan Farmers -->
+      <div class="column-box">
+        <!-- Replace "farmer.jpg" with your actual image file name -->
+        <img src="farmer.jpg" alt="Rambutan Farmers" class="column-img">
+        <h3>Rambutan Farmers</h3>
+        <p>Connect directly with wholesale buyers, access seasonal price trends, and share modern cultivation insights to boost crop yield and field efficiency.</p>
+      </div>
+
+      <!-- Column 2: Buyers -->
+      <div class="column-box">
+        <!-- Replace "buyer.jpg" with your actual image file name -->
+        <img src="buyer.jpg" alt="Buyers" class="column-img">
+        <h3>Buyers</h3>
+        <p>Source freshly harvested, premium quality Rambutan fruit supplies directly from verified regional orchards without unnecessary intermediary channels.</p>
+      </div>
+
+      <!-- Column 3: Nurseries -->
+      <div class="column-box">
+        <!-- Replace "nursery.jpg" with your actual image file name -->
+        <img src="nursery.jpg" alt="Nurseries" class="column-img">
+        <h3>Nurseries</h3>
+        <p>Showcase certified elite fruit grafts, display high-yield sapling cross-breeds, and interact directly with farmers expanding their orchard operations.</p>
+      </div>
+
+      <!-- Column 4: Accessories Suppliers -->
+      <div class="column-box">
+        <!-- Replace "supplier.jpg" with your actual image file name -->
+        <img src="supplier.jpg" alt="Accessories Suppliers" class="column-img">
+        <h3>Accessories Suppliers</h3>
+        <p>Promote professional harvesting tools, packing containers, organic fertilizers, and protective canopy netting directly to dedicated growers.</p>
+      </div>
+
+    </div>
   </section>
 
   <!-- =========================================
