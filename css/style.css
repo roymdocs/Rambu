@@ -2,7 +2,7 @@
    GLOBAL STYLES (Applies to entire page)
    ========================================= */
 body {
-  margin: 0;                   /* Removes default browser margins around the page */
+  margin: 0;                    /* Removes default browser margins around the page */
   font-family: Arial, sans-serif; /* Sets the default font for the entire site */
   color: #222;                 /* Default dark text color for readability */
   background: #f4f4f4;         /* A light gray background for the overall page */
@@ -108,40 +108,106 @@ nav a:hover {
 }
 
 /* =========================================
-   NEW MAIN CONTENT STYLES (FULL WIDTH & COLUMNS)
+   MAIN CONTENT STYLES (MIDDLE SECTION)
    ========================================= */
-/* Container for the main page content - Changed to stretch Full Width */
 .middle {
   padding: 50px 20px;          /* Space inside the content area */
   width: 100%;                 /* Takes full width of the screen */
   box-sizing: border-box;      /* Ensures padding doesn't push width over 100% */
   background: white;           /* Clean white background for the text area */
-  text-align: center;          /* Centers the main headline text */
+  text-align: left;            /* Left aligned for the side-by-side layout layout */
 }
 
 /* Main welcome headline styling */
 .middle h1 {
   color: #1f8f3a;              
   font-size: 32px;
+  margin-top: 0;
   margin-bottom: 15px;
 }
 
 /* Main introductory paragraph text layout */
 .intro-text {
   max-width: 1200px;            /* Keeps the reading text line block at a comfortable length */
-  margin: 0 auto 50px auto;    /* Centers the paragraph and pushes the 4-columns down */
-  line-height: 1.1;            /* Increases readability spacing between lines */
-  font-size: 13px;
+  line-height: 1.6;            /* Clean line height layout for text density */
+  font-size: 14px;
   color: #444;
+  margin-bottom: 25px;
 }
 
+/* =========================================
+   NEW: FARMER'S CORNER CONTAINER & BUTTONS
+   ========================================= */
+/* Container setup for side-by-side image and layout split */
+.farmer-corner-container {
+  display: flex;
+  flex-direction: column;      /* Default mobile behavior is stacked stacked */
+  gap: 35px;
+  align-items: center;
+  padding: 40px 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Image wrapper constraints */
+.farmer-image-wrapper {
+  width: 100%;
+  max-width: 480px;            /* Keeps the profile content photo bounded beautifully */
+}
+
+.farmer-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Action button cluster assembly line layout */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;             /* Safely wraps elements on smaller break screens */
+  gap: 15px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+/* Green Brand Button standard color logic */
+.btn-green {
+  background-color: #1f8f3a;   /* Uses your exact brand green accent */
+  color: #ffffff;
+}
+
+.btn-green:hover {
+  background-color: #166629;   /* Darker variation for standard interactive hover states */
+}
+
+.btn-green:active {
+  transform: scale(0.98);
+}
+
+/* =========================================
+   4-COLUMN GRID LAYOUT SECTION
+   ========================================= */
 /* Wrapper layout that holds the 4 responsive columns side-by-side */
 .column-container {
   display: flex;               /* Uses flexbox to place columns horizontally */
   justify-content: center;     /* Centers columns inside the full-width layout */
   gap: 25px;                   /* Spacing between individual columns */
   max-width: 1300px;           /* Gives the column row a maximum outer boundary grid */
-  margin: 0 auto;              /* Centers the column row container grid on screen */
+  margin: 40px auto 0 auto;    /* Pushes away from the content block above */
 }
 
 /* Styling for each individual item block inside the 4 columns */
@@ -191,6 +257,17 @@ footer {
 /* =========================================
    RESPONSIVE DESIGN (Media Queries)
    ========================================= */
+/* Added: Intermediate desktop/tablet split view rule logic */
+@media (min-width: 768px) {
+  .farmer-corner-container {
+    flex-direction: row;       /* Flips side-by-side layout on desktop */
+    align-items: flex-start;
+  }
+  .farmer-image-wrapper {
+    flex: 0 0 35%;             /* Scales picture safely to 35% layout row space */
+  }
+}
+
 @media (max-width: 900px) {
   /* Break column flex array down on standard tablet screen layouts */
   .column-container {
