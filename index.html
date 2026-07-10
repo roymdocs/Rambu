@@ -1,188 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Basic Setup Section -->
   <meta charset="UTF-8" />
+  <!-- This line makes the website responsive on mobile phones by setting the viewport width -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RAMBUCONNECT</title>
+  <title>RAMBUCONNECT - Student Project</title>
+  
   <style>
+    /* =========================================
+       GLOBAL STYLES (Applies to entire page)
+       ========================================= */
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #222;
-      background: #f4f4f4;
+      margin: 0;                   /* Removes default browser margins around the page */
+      font-family: Arial, sans-serif; /* Sets the default font for the entire site */
+      color: #222;                 /* Default dark text color for readability */
+      background: #f4f4f4;         /* A light gray background for the overall page */
     }
 
+    /* =========================================
+       TOPBAR & LOGO SECTION
+       ========================================= */
     .topbar {
+      /* The background uses a gradient that fades from white (left) to green (right) */
       background: linear-gradient(to right, white 0%, white 55%, #1f8f3a 100%);
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px solid #ddd;
-      position: relative;
+      padding: 15px 20px;          /* Adds space inside the topbar (top/bottom, left/right) */
+      display: flex;               /* Uses Flexbox for easy alignment of logo and menu */
+      align-items: center;         /* Centers logo and menu vertically within the bar */
+      justify-content: space-between; /* Pushes the brand to the left and the menu toward the right */
+      border-bottom: 2px solid #ddd; /* Adds a light gray separating line at the bottom */
+      position: relative;          /* Keeps elements relative to this container */
+      z-index: 10;                 /* Ensures the topbar stays above other content like the header image */
     }
 
+    /* Brand container holds the logo and potential site name */
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      display: flex;               /* Aligns elements inside horizontally */
+      align-items: center;         /* Centers elements inside vertically */
+      gap: 12px;                   /* Adds space between the logo image and any side text */
     }
 
-    .logo {
-      width: 50px;
-      height: 50px;
-      background: #1f8f3a;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      border-radius: 8px;
+    /* Styling for the new image logo */
+    .logo-img {
+      height: 48px;                /* [EXPERIMENT] Try changing 48px to 30px or 60px to scale the logo height */
+      width: auto;                 /* Keeps the image's original aspect ratio perfect */
+      display: block;              /* Treats the image as a block element within the flex container */
     }
 
-    .site-name {
-      font-size: 24px;
-      font-weight: bold;
-      color: #1f8f3a;
-      white-space: nowrap; /* Prevents text from breaking onto two lines */
-    }
-
+    /* =========================================
+       NAVIGATION MENU SECTION
+       ========================================= */
     nav {
-      display: flex;
-      align-items: center;
-      justify-content: center; /* Centers the links horizontally */
-      flex-grow: 1;           /* Makes the nav expand to occupy the center space */
-      gap: 20px;
-      flex-wrap: wrap;
+      display: flex;               /* Aligns menu links horizontally */
+      align-items: center;         /* Centers links vertically */
+      gap: 20px;                   /* [EXPERIMENT] Change 20px to adjust space between menu links */
+      flex-wrap: wrap;             /* Allows links to wrap to the next line on medium screens */
     }
 
+    /* Styling for each link in the navigation menu */
     nav a {
-      text-decoration: none;
-      color: #222;
-      font-weight: bold;
+      text-decoration: none;       /* Removes the default underline from links */
+      color: #222;                 /* [EXPERIMENT] Change color code (e.g., #1f8f3a) for default link color */
+      font-weight: bold;           /* Makes the menu text bold */
     }
 
+    /* Hover effect for the menu links */
     nav a:hover {
-      color: #1f8f3a;
+      color: #1f8f3a;              /* [EXPERIMENT] Change this to make links turn red or blue on hover */
     }
 
+    /* =========================================
+       DROPDOWN MENU SECTION
+       ========================================= */
+    /* Container for the 'Join us!' dropdown link and content */
     .dropdown {
-      position: relative;
-      display: inline-block;
+      position: relative;          /* Allows the dropdown-content to be positioned absolutely relative to this */
+      display: inline-block;       /* Keeps the dropdown element in line with other menu items */
     }
 
+    /* Styling for the dropdown content box (initially hidden) */
     .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background: white;
-      min-width: 160px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      z-index: 1;
-      border-radius: 6px;
-      overflow: hidden;
+      display: none;               /* CRITICAL: Hides the dropdown content by default */
+      position: absolute;          /* Places the box precisely relative to the .dropdown container */
+      top: 100%;                   /* Positions the box directly below the 'Join us!' link */
+      right: 0;                    /* Aligns the right edge of the box with the right edge of the link */
+      background: white;           /* Sets a clean white background for the dropdown menu */
+      min-width: 160px;            /* Ensures the dropdown box is at least 160px wide */
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Adds a subtle shadow for depth */
+      z-index: 1;                  /* Ensures the dropdown appears above other content */
+      border-radius: 6px;          /* Rounds the corners of the dropdown box */
+      overflow: hidden;            /* Ensures the hover background color respects the rounded corners */
     }
 
+    /* Styling for links inside the dropdown menu */
     .dropdown-content a {
-      display: block;
-      padding: 10px 14px;
-      margin: 0;
-      color: #222;
+      display: block;              /* Makes each link take up the full width of the box */
+      padding: 10px 14px;          /* Adds space inside each dropdown item */
+      margin: 0;                   /* Removes default link margins */
+      color: #222;                 /* Default text color for dropdown links */
+      font-weight: normal;        /* Dropdown items use normal weight text */
     }
 
+    /* Hover effect for links inside the dropdown menu */
     .dropdown-content a:hover {
-      background: #f0f0f0;
-      color: #1f8f3a;
+      background: #f0f0f0;         /* [EXPERIMENT] Change this to #1f8f3a to match the green theme on hover */
+      color: #1f8f3a;              /* [EXPERIMENT] Change this to white if you make the background green */
     }
 
+    /* Shows the dropdown content when the parent .dropdown is hovered */
     .dropdown:hover .dropdown-content {
-      display: block;
+      display: block;              /* CRITICAL: Shows the hidden dropdown content */
     }
 
+    /* =========================================
+       HEADER & MIDDLE CONTENT SECTION
+       ========================================= */
+    /* Container for the large header/hero image */
     .header-image {
-      width: 100%;
-      height: 300px;
-      background: url("https://raw.githubusercontent.com/roymdocs/Rambu/main/header_rambu.jpg") center/cover no-repeat;
+      width: 100%;                 /* Full width of the page */
+      height: 300px;               /* [EXPERIMENT] Change 300px to 200px or 400px to adjust header height */
+      background: url("header_rambu.png") center/cover no-repeat; /* [CRITICAL] Set your image path here */
     }
 
+    /* Container for the main page content */
     .middle {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-      background: white;
+      padding: 40px 20px;          /* Space inside the content area (top/bottom, left/right) */
+      max-width: 900px;            /* [EXPERIMENT] Change 900px to limit how wide the content area can get */
+      margin: auto;                /* Centers the content area horizontally on the page */
+      background: white;           /* Clean white background for the text area */
+      border-radius: 8px;          /* [EXPERIMENT] Add border-radius for rounded content box corners */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Adds a very subtle shadow for elevation */
     }
 
+    /* Styling for the main heading (H1) */
     .middle h1 {
-      color: #1f8f3a;
+      color: #1f8f3a;              /* [EXPERIMENT] Change this color code for a different heading color */
     }
 
+    /* Styling for paragraphs (P) in the content area */
+    .middle p {
+      line-height: 1.6;            /* [EXPERIMENT] Adjust 1.6 to 1.4 or 1.8 to change spacing between text lines */
+    }
+
+    /* =========================================
+       FOOTER SECTION
+       ========================================= */
     footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 18px;
-      font-size: 16px;
+      background: #222;             /* Dark gray background for the footer */
+      color: white;                /* White text color for contrast */
+      text-align: center;          /* Centers the footer text */
+      padding: 18px;               /* Space inside the footer */
+      font-size: 16px;             /* Footer text size */
+      margin-top: 40px;            /* Space above the footer */
     }
 
+    /* =========================================
+       RESPONSIVE DESIGN (Media Queries)
+       ========================================= */
+    /* These styles apply only when the screen width is 700px or less (e.g., mobile phones) */
     @media (max-width: 700px) {
       .topbar {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: column;    /* Stacks the brand (logo) above the menu */
+        align-items: flex-start;   /* Aligns stacked elements to the left */
+        padding: 10px 15px;        /* Reduces padding slightly on mobile */
       }
 
       nav {
-        margin-top: 10px;
-        gap: 14px;
-        justify-content: flex-start; /* Aligns links left on mobile screens */
-        width: 100%;
+        margin-top: 10px;          /* Space between the logo and the menu links */
+        gap: 14px;                 /* Reduces spacing between menu links on mobile */
+        width: 100%;               /* Ensures the nav takes up full width for proper stacking */
+      }
+      
+      .logo-img {
+        height: 36px;              /* [EXPERIMENT] Scales the logo height down on small screens */
       }
 
       .header-image {
-        height: 180px;
+        height: 180px;             /* [EXPERIMENT] Reduces header image height on small screens */
       }
 
+      /* Adjusts dropdown content positioning for mobile vertical stack */
       .dropdown-content {
-        right: auto;
-        left: 0;
+        right: auto;               /* Resets default right alignment */
+        left: 0;                   /* Aligns dropdown content to the left of the link on mobile */
+        position: static;          /* Pushes mobile dropdown below the menu instead of overlaying */
+        width: 100%;               /* Makes dropdown full width in vertical mobile list */
+        box-shadow: none;          /* Removes shadow for cleaner mobile view */
+        border-radius: 0;          /* Removes rounded corners on mobile full width */
+      }
+      
+      /* Mobile dropdown is hidden until clicked on mobile (often requires JavaScript, but this keeps it simple CSS hover) */
+      .dropdown:hover .dropdown-content {
+        display: block; 
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- =========================================
+       TOPBAR SECTION (Logo & Navigation)
+       ========================================= -->
   <div class="topbar">
+    <!-- Brand area: contains the site logo image -->
     <div class="brand">
-      <div class="logo">R</div>
-      <div class="site-name">RAMBUCONNECT</div>
+      <!-- Image Logo with descriptive ALT text for accessibility and SEO -->
+      <a href="#home">
+        <img src="logo.png" alt="RambuConnect Logo" class="logo-img">
+      </a>
     </div>
 
+    <!-- Navigation area: contains menu links and dropdowns -->
     <nav>
+      <!-- Basic navigation links -->
       <a href="#home">Home</a>
       <a href="#about">About us</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact us</a>
 
+      <!-- Dropdown menu structure -->
       <div class="dropdown">
+        <!-- The link that activates the dropdown on hover -->
         <a href="#join">Join us!</a>
+        
+        <!-- The hidden dropdown content box -->
         <div class="dropdown-content">
           <a href="Farmers.html">Farmers</a>
           <a href="Buyers.html">Buyers</a>
           <a href="Nurseries.html">Nurseries</a>
+          <!-- Example showing a hashtag link if the file doesn't exist yet -->
           <a href="#Accessories.html">Accessories</a>
         </div>
       </div>
     </nav>
   </div>
 
+  <!-- =========================================
+       HERO HEADER SECTION
+       ========================================= -->
+  <!-- A container to hold the large header image (defined in CSS) -->
   <div class="header-image"></div>
 
+  <!-- =========================================
+       MAIN CONTENT SECTION
+       ========================================= -->
+  <!-- Section container for the central page content -->
   <section class="middle">
+    <!-- Main heading for the welcome message -->
     <h1>Welcome to RAMBUCONNECT</h1>
-    <p>This is a simple school-level website made using HTML and CSS only.</p>
-    <p>You can write your project details, school information, or any basic content here.</p>
+    
+    <!-- Paragraphs describing the project/content -->
+    <p>This is a simple school-level website made using HTML and CSS only. I have integrated the new transparent logo image in the topbar and optimized the layout.</p>
+    <p>All CSS properties have detailed comments so you can easily change values like colors, spacing, and sizes to experiment for your project. You can write your project details, school information, or any basic content here.</p>
   </section>
 
+  <!-- =========================================
+       FOOTER SECTION
+       ========================================= -->
+  <!-- Footer area at the bottom of the page -->
   <footer>
     A project by Amit Lijo, Class XII
   </footer>
