@@ -1,265 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Basic Setup Section -->
   <meta charset="UTF-8" />
-  <!-- This line makes the website responsive on mobile phones by setting the viewport width -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RAMBUCONNECT - Student Project</title>
   
-  <style>
-    /* =========================================
-       GLOBAL STYLES (Applies to entire page)
-       ========================================= */
-    body {
-      margin: 0;                   /* Removes default browser margins around the page */
-      font-family: Arial, sans-serif; /* Sets the default font for the entire site */
-      color: #222;                 /* Default dark text color for readability */
-      background: #f4f4f4;         /* A light gray background for the overall page */
-    }
-
-    /* =========================================
-       TOPBAR & LOGO SECTION
-       ========================================= */
-    .topbar {
-      background: linear-gradient(to right, white 0%, white 55%, #1f8f3a 100%);
-      padding: 15px 20px;          /* Adds space inside the topbar (top/bottom, left/right) */
-      display: flex;               /* Uses Flexbox layout */
-      align-items: center;         /* Centers elements inside vertically */
-      border-bottom: 2px solid #ddd; /* Adds a light gray separating line at the bottom */
-      position: relative;          /* CRITICAL: Allows the nav menu to align perfectly to the absolute center */
-      z-index: 10;                 /* Ensures the topbar stays above the header image layer */
-    }
-
-    /* Brand container holds the logo image */
-    .brand {
-      display: flex;               /* Aligns elements inside horizontally */
-      align-items: center;         /* Centers elements inside vertically */
-    }
-
-    /* Styling for the transparent image logo */
-    .logo-img {
-      height: 80px;                /* [EXPERIMENT] Try changing 48px to adjust logo size */
-      width: auto;                 /* Keeps the image's original aspect ratio perfect */
-      display: block;              /* Treats the image as a block element */
-    }
-
-    /* =========================================
-       NAVIGATION MENU SECTION (PERFECTLY CENTERED)
-       ========================================= */
-    nav {
-      display: flex;               /* Aligns menu links horizontally */
-      align-items: center;         /* Centers links vertically */
-      gap: 20px;                   /* [EXPERIMENT] Change 20px to adjust space between menu links */
-      
-      /* CRITICAL STYLING FOR TRUE CENTER ALIGNMENT: */
-      position: absolute;          /* Pulls the menu out of the regular text flow */
-      left: 50%;                   /* Moves the left edge of the menu to the exact center of the screen */
-      transform: translateX(-50%); /* Shifts the menu left by half its width to make it perfectly centered */
-    }
-
-    /* Styling for each link in the navigation menu */
-    nav a {
-      text-decoration: none;       /* Removes the default underline from links */
-      color: #222;                 /* Default link color */
-      font-weight: bold;           /* Makes the menu text bold */
-    }
-
-    /* Hover effect for the menu links */
-    nav a:hover {
-      color: #1f8f3a;              /* Turn green on hover */
-    }
-
-    /* =========================================
-       DROPDOWN MENU SECTION
-       ========================================= */
-    .dropdown {
-      position: relative;          
-      display: inline-block;       
-    }
-
-    .dropdown-content {
-      display: none;               
-      position: absolute;          
-      top: 100%;                   
-      right: 0;                    
-      background: white;           
-      min-width: 160px;            
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
-      z-index: 1;                  
-      border-radius: 6px;          
-      overflow: hidden;            
-    }
-
-    .dropdown-content a {
-      display: block;              
-      padding: 10px 14px;          
-      margin: 0;                   
-      color: #222;                 
-      font-weight: normal;         
-    }
-
-    .dropdown-content a:hover {
-      background: #f0f0f0;         
-      color: #1f8f3a;              
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;              
-    }
-
-    /* =========================================
-       HEADER IMAGE SECTION
-       ========================================= */
-    .header-image {
-      width: 100%;                 
-      height: 300px;               
-      background: url("header_rambu.jpg") center/cover no-repeat; 
-    }
-
-    /* =========================================
-       NEW MAIN CONTENT STYLES (FULL WIDTH & COLUMNS)
-       ========================================= */
-    /* Container for the main page content - Changed to stretch Full Width */
-    .middle {
-      padding: 50px 20px;          /* Space inside the content area */
-      width: 100%;                 /* Takes full width of the screen */
-      box-sizing: border-box;      /* Ensures padding doesn't push width over 100% */
-      background: white;           /* Clean white background for the text area */
-      text-align: center;          /* Centers the main headline text */
-    }
-
-    /* Main welcome headline styling */
-    .middle h1 {
-      color: #1f8f3a;              
-      font-size: 32px;
-      margin-bottom: 15px;
-    }
-
-    /* Main introductory paragraph text layout */
-    .intro-text {
-      max-width: 1200px;            /* Keeps the reading text line block at a comfortable length */
-      margin: 0 auto 50px auto;    /* Centers the paragraph and pushes the 4-columns down */
-      line-height: 1.1;            /* Increases readability spacing between lines */
-      font-size: 13px;
-      color: #444;
-    }
-
-    /* Wrapper layout that holds the 4 responsive columns side-by-side */
-    .column-container {
-      display: flex;               /* Uses flexbox to place columns horizontally */
-      justify-content: center;     /* Centers columns inside the full-width layout */
-      gap: 25px;                   /* Spacing between individual columns */
-      max-width: 1300px;           /* Gives the column row a maximum outer boundary grid */
-      margin: 0 auto;              /* Centers the column row container grid on screen */
-    }
-
-    /* Styling for each individual item block inside the 4 columns */
-    .column-box {
-      flex: 1;                     /* Forces all 4 columns to be exactly equal in width */
-      background: #f9f9f9;         /* Very light gray tint background for structural contrast */
-      padding: 25px 15px;          /* Padding spacing inside the column box border margins */
-      border-radius: 8px;          /* Smooth rounded edge design */
-      border-top: 4px solid #1f8f3a; /* Creative top brand strip accents on each category */
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Soft structural framing elevation layer shadow */
-    }
-
-    /* Column Header text titles */
-    .column-box h3 {
-      color: #1f8f3a;
-      font-size: 20px;
-      margin: 15px 0 10px 0;
-    }
-
-    /* Summary descriptors below column headers */
-    .column-box p {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.5;
-    }
-
-    /* [CRITICAL] Image formatting inside the columns to keep them uniform */
-    .column-img {
-      width: 100%;                 /* Dynamically stretches image to safely fit the box grid width */
-      height: 160px;               /* [EXPERIMENT] Change height value to make grid cards shorter or taller */
-      object-fit: cover;           /* Auto crops images proportionally without squash distortion */
-      border-radius: 4px;          /* Rounds photo frame sharp edges layout */
-      background: #ddd;            /* Serves as a neutral placeholder fill block color if file is missing */
-    }
-
-    /* =========================================
-       FOOTER SECTION
-       ========================================= */
-    footer {
-      background: #222;            
-      color: white;                
-      text-align: center;          
-      padding: 18px;               
-      font-size: 16px;             
-    }
-
-    /* =========================================
-       RESPONSIVE DESIGN (Media Queries)
-       ========================================= */
-    @media (max-width: 900px) {
-      /* Break column flex array down on standard tablet screen layouts */
-      .column-container {
-        flex-wrap: wrap;           /* Allows column blocks to overflow rows grid layout wrap properties */
-      }
-      .column-box {
-        flex: 0 0 45%;             /* Forms clean 2x2 grid configurations on intermediate interfaces */
-      }
-    }
-
-    @media (max-width: 700px) {
-      .topbar {
-        flex-direction: column;    
-        align-items: center;       
-        padding: 10px 15px;        
-      }
-
-      nav {
-        position: static;          
-        transform: none;           
-        margin-top: 12px;          
-        gap: 14px;                 
-        width: 100%;               
-        justify-content: center;   
-      }
-      
-      .logo-img {
-        height: 36px;              
-      }
-
-      .header-image {
-        height: 180px;             
-      }
-
-      /* Stacks columns vertically into 1 uniform single vertical scroll stream on standard mobile phone widths */
-      .column-container {
-        flex-direction: column;
-        gap: 20px;
-      }
-      .column-box {
-        flex: 1;                   /* Spans full cross widths in single list array blocks */
-      }
-
-      .dropdown-content {
-        right: auto;               
-        left: 0;                   
-        position: static;          
-        width: 100%;               
-        box-shadow: none;          
-        border-radius: 0;          
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- =========================================
-       TOPBAR SECTION (Logo & Navigation)
-       ========================================= -->
   <div class="topbar">
     <div class="brand">
       <a href="#home">
@@ -285,52 +34,36 @@
     </nav>
   </div>
 
-  <!-- =========================================
-       HERO HEADER SECTION
-       ========================================= -->
   <div class="header-image"></div>
 
-  <!-- =========================================
-       MAIN CONTENT SECTION (FULL WIDTH & COLUMNS)
-       ========================================= -->
   <section class="middle">
-     <!-- <h1>Welcome to RAMBUCONNECT</h1>
+    <h1>Welcome to RAMBUCONNECT</h1>
     
-    <!-- 75-Word Introduction Paragraph explaining why they should join -->
     <p class="intro-text">
       RambuConnect's integrated network provides businesses with direct access to certified high-yield planting stocks, reliable trade transactions, premium farming supplies, and modern logistics solutions. Join our growing community today to transform your local agricultural workflows into scalable, sustainable market growth.
     </p>
 
-    <!-- 4 Responsive Column Grid Layout -->
     <div class="column-container">
       
-      <!-- Column 1: Rambutan Farmers -->
       <div class="column-box">
-        <!-- Replace "farmer.jpg" with your actual image file name -->
         <img src="farmer.png" alt="Rambutan Farmers" class="column-img">
         <h3>Rambutan Farmers</h3>
         <p>Connect directly with wholesale buyers, access seasonal price trends, and share modern cultivation insights to boost crop yield and field efficiency.</p>
       </div>
 
-      <!-- Column 2: Buyers -->
       <div class="column-box">
-        <!-- Replace "buyer.jpg" with your actual image file name -->
         <img src="buyer.png" alt="Buyers" class="column-img">
         <h3>Buyers</h3>
         <p>Source freshly harvested, premium quality Rambutan fruit supplies directly from verified regional orchards without unnecessary intermediary channels.</p>
       </div>
 
-      <!-- Column 3: Nurseries -->
       <div class="column-box">
-        <!-- Replace "nursery.jpg" with your actual image file name -->
         <img src="nursery.png" alt="Nurseries" class="column-img">
         <h3>Nurseries</h3>
         <p>Showcase certified elite fruit grafts, display high-yield sapling cross-breeds, and interact directly with farmers expanding their orchard operations.</p>
       </div>
 
-      <!-- Column 4: Accessories Suppliers -->
       <div class="column-box">
-        <!-- Replace "supplier.jpg" with your actual image file name -->
         <img src="supplier.png" alt="Accessories Suppliers" class="column-img">
         <h3>Accessories Suppliers</h3>
         <p>Promote professional harvesting tools, packing containers, organic fertilizers, and protective canopy netting directly to dedicated growers.</p>
@@ -339,9 +72,6 @@
     </div>
   </section>
 
-  <!-- =========================================
-       FOOTER SECTION
-       ========================================= -->
   <footer>
     A project by Amit Lijo, Class XII
   </footer>
