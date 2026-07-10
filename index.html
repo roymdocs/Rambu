@@ -44,11 +44,14 @@
       font-size: 24px;
       font-weight: bold;
       color: #1f8f3a;
+      white-space: nowrap; /* Prevents text from breaking onto two lines */
     }
 
     nav {
       display: flex;
       align-items: center;
+      justify-content: center; /* Centers the links horizontally */
+      flex-grow: 1;           /* Makes the nav expand to occupy the center space */
       gap: 20px;
       flex-wrap: wrap;
     }
@@ -103,7 +106,6 @@
       background: url("https://raw.githubusercontent.com/roymdocs/Rambu/main/header_rambu.jpg") center/cover no-repeat;
     }
 
- 
     .middle {
       padding: 40px 20px;
       max-width: 900px;
@@ -132,6 +134,8 @@
       nav {
         margin-top: 10px;
         gap: 14px;
+        justify-content: flex-start; /* Aligns links left on mobile screens */
+        width: 100%;
       }
 
       .header-image {
