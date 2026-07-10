@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Basic Setup Section -->
@@ -22,15 +22,13 @@
        TOPBAR & LOGO SECTION
        ========================================= */
     .topbar {
-      /* The background uses a gradient that fades from white (left) to green (right) */
-      background: linear-gradient(to right, white 0%, white 55%, #1f8f3a 100%);
+      background: white;           /* Solid white background for clean contrast */
       padding: 15px 20px;          /* Adds space inside the topbar (top/bottom, left/right) */
-      display: flex;               /* Uses Flexbox for easy alignment of logo and menu */
-      align-items: center;         /* Centers logo and menu vertically within the bar */
-      justify-content: space-between; /* Pushes the brand to the left and the menu toward the right */
+      display: flex;               /* Uses Flexbox layout */
+      align-items: center;         /* Centers elements inside vertically */
       border-bottom: 2px solid #ddd; /* Adds a light gray separating line at the bottom */
-      position: relative;          /* Keeps elements relative to this container */
-      z-index: 10;                 /* Ensures the topbar stays above other content like the header image */
+      position: relative;          /* CRITICAL: Allows the nav menu to align perfectly to the absolute center */
+      z-index: 10;                 /* Ensures the topbar stays above the header image layer */
     }
 
     /* Brand container holds the logo image */
@@ -39,27 +37,31 @@
       align-items: center;         /* Centers elements inside vertically */
     }
 
-    /* Styling for the new image logo */
+    /* Styling for the transparent image logo */
     .logo-img {
-      height: 70px;                /* [EXPERIMENT] Try changing 48px to 30px or 60px to scale the logo height */
+      height: 48px;                /* [EXPERIMENT] Try changing 48px to adjust logo size */
       width: auto;                 /* Keeps the image's original aspect ratio perfect */
-      display: block;              /* Treats the image as a block element within the flex container */
+      display: block;              /* Treats the image as a block element */
     }
 
     /* =========================================
-       NAVIGATION MENU SECTION
+       NAVIGATION MENU SECTION (PERFECTLY CENTERED)
        ========================================= */
     nav {
       display: flex;               /* Aligns menu links horizontally */
       align-items: center;         /* Centers links vertically */
       gap: 20px;                   /* [EXPERIMENT] Change 20px to adjust space between menu links */
-      flex-wrap: wrap;             /* Allows links to wrap to the next line on medium screens */
+      
+      /* CRITICAL STYLING FOR TRUE CENTER ALIGNMENT: */
+      position: absolute;          /* Pulls the menu out of the regular text flow */
+      left: 50%;                   /* Moves the left edge of the menu to the exact center of the screen */
+      transform: translateX(-50%); /* Shifts the menu left by half its width to make it perfectly centered */
     }
 
     /* Styling for each link in the navigation menu */
     nav a {
       text-decoration: none;       /* Removes the default underline from links */
-      color: #222;                 /* [EXPERIMENT] Change color code (e.g., #1f8f3a) for default link color */
+      color: #222;                 /* [EXPERIMENT] Change color code for default link color */
       font-weight: bold;           /* Makes the menu text bold */
     }
 
@@ -97,13 +99,13 @@
       padding: 10px 14px;          /* Adds space inside each dropdown item */
       margin: 0;                   /* Removes default link margins */
       color: #222;                 /* Default text color for dropdown links */
-      font-weight: normal;        /* Dropdown items use normal weight text */
+      font-weight: normal;         /* Dropdown items use normal weight text */
     }
 
     /* Hover effect for links inside the dropdown menu */
     .dropdown-content a:hover {
-      background: #f0f0f0;         /* [EXPERIMENT] Change this to #1f8f3a to match the green theme on hover */
-      color: #1f8f3a;              /* [EXPERIMENT] Change this to white if you make the background green */
+      background: #f0f0f0;         /* [EXPERIMENT] Change this to match the green theme on hover */
+      color: #1f8f3a;              /* Change text color on hover */
     }
 
     /* Shows the dropdown content when the parent .dropdown is hovered */
@@ -117,36 +119,35 @@
     /* Container for the large header/hero image */
     .header-image {
       width: 100%;                 /* Full width of the page */
-      height: 300px;               /* [EXPERIMENT] Change 300px to 200px or 400px to adjust header height */
-      /* [CRITICAL] Set your image path here. Note the extension is .jpg */
-      background: url("https://raw.githubusercontent.com/roymdocs/Rambu/main/header_rambu.jpg") center/cover no-repeat; 
+      height: 300px;               /* [EXPERIMENT] Change height to adjust header size */
+      background: url("https://raw.githubusercontent.com/roymdocs/Rambu/main/header_rambu.jpg") center/cover no-repeat; /* Local image filename */
     }
 
     /* Container for the main page content */
     .middle {
       padding: 40px 20px;          /* Space inside the content area (top/bottom, left/right) */
-      max-width: 900px;            /* [EXPERIMENT] Change 900px to limit how wide the content area can get */
+      max-width: 900px;            /* Limit how wide the content area can get */
       margin: 40px auto;           /* Centers the content area horizontally and adds top/bottom margin */
       background: white;           /* Clean white background for the text area */
-      border-radius: 8px;          /* [EXPERIMENT] Add border-radius for rounded content box corners */
+      border-radius: 8px;          /* Add border-radius for rounded content box corners */
       box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Adds a very subtle shadow for elevation */
     }
 
     /* Styling for the main heading (H1) */
     .middle h1 {
-      color: #1f8f3a;              /* [EXPERIMENT] Change this color code for a different heading color */
+      color: #1f8f3a;              /* Heading color */
     }
 
     /* Styling for paragraphs (P) in the content area */
     .middle p {
-      line-height: 1.6;            /* [EXPERIMENT] Adjust 1.6 to 1.4 or 1.8 to change spacing between text lines */
+      line-height: 1.6;            /* Adjust spacing between text lines */
     }
 
     /* =========================================
        FOOTER SECTION
        ========================================= */
     footer {
-      background: #222;             /* Dark gray background for the footer */
+      background: #222;            /* Dark gray background for the footer */
       color: white;                /* White text color for contrast */
       text-align: center;          /* Centers the footer text */
       padding: 18px;               /* Space inside the footer */
@@ -160,38 +161,37 @@
     /* These styles apply only when the screen width is 700px or less (e.g., mobile phones) */
     @media (max-width: 700px) {
       .topbar {
-        flex-direction: column;    /* Stacks the brand (logo) above the menu */
-        align-items: flex-start;   /* Aligns stacked elements to the left */
+        flex-direction: column;    /* Stacks the logo container cleanly above the menu */
+        align-items: center;       /* Centers all stacked elements vertically on small screens */
         padding: 10px 15px;        /* Reduces padding slightly on mobile */
       }
 
       nav {
-        margin-top: 10px;          /* Space between the logo and the menu links */
-        gap: 14px;                 /* Reduces spacing between menu links on mobile */
-        width: 100%;               /* Ensures the nav takes up full width for proper stacking */
+        /* CRITICAL RESET FOR MOBILE: Turns off absolute positioning so links wrap naturally */
+        position: static;          
+        transform: none;           
+        margin-top: 12px;          /* Adds comfortable spacing between the logo and links */
+        gap: 14px;                 /* Reduces spacing between menu links on small mobile layout */
+        width: 100%;               /* Spans full width */
+        justify-content: center;   /* Keeps links centered inside the menu row on mobile */
       }
       
       .logo-img {
-        height: 36px;              /* [EXPERIMENT] Scales the logo height down on small screens */
+        height: 36px;              /* Scales the logo size down on small mobile screens */
       }
 
       .header-image {
-        height: 180px;             /* [EXPERIMENT] Reduces header image height on small screens */
+        height: 180px;             /* Reduces header image height on small screens */
       }
 
-      /* Adjusts dropdown content positioning for mobile vertical stack */
+      /* Adjusts dropdown content positioning for mobile layout */
       .dropdown-content {
-        right: auto;               /* Resets default right alignment */
-        left: 0;                   /* Aligns dropdown content to the left of the link on mobile */
-        position: static;          /* Pushes mobile dropdown below the menu instead of overlaying */
+        right: auto;               
+        left: 0;                   
+        position: static;          /* Pushes mobile dropdown below the menu link cleanly */
         width: 100%;               /* Makes dropdown full width in vertical mobile list */
         box-shadow: none;          /* Removes shadow for cleaner mobile view */
-        border-radius: 0;          /* Removes rounded corners on mobile full width */
-      }
-      
-      /* Mobile dropdown is hidden until clicked on mobile (keeps it simple CSS hover) */
-      .dropdown:hover .dropdown-content {
-        display: block; 
+        border-radius: 0;          
       }
     }
   </style>
@@ -204,14 +204,13 @@
   <div class="topbar">
     <!-- Brand area: contains the site logo image -->
     <div class="brand">
-      <!-- Image Logo with descriptive ALT text for accessibility -->
       <a href="#home">
-        <!-- [CRITICAL] Image path. Note capitalization and .png extension -->
+        <!-- Local image source matching the filename exact layout case -->
         <img src="https://raw.githubusercontent.com/roymdocs/Rambu/main/RambuConnectLogo.png" alt="RambuConnect Logo" class="logo-img">
       </a>
     </div>
 
-    <!-- Navigation area: contains menu links and dropdowns -->
+    <!-- Navigation area: contains menu links and dropdowns (CENTERED ON DESKTOP) -->
     <nav>
       <!-- Basic navigation links -->
       <a href="#home">Home</a>
@@ -229,7 +228,6 @@
           <a href="Farmers.html">Farmers</a>
           <a href="Buyers.html">Buyers</a>
           <a href="Nurseries.html">Nurseries</a>
-          <!-- Example showing a hashtag link if the file doesn't exist yet -->
           <a href="#Accessories.html">Accessories</a>
         </div>
       </div>
@@ -239,26 +237,21 @@
   <!-- =========================================
        HERO HEADER SECTION
        ========================================= -->
-  <!-- A container to hold the large header image (defined in CSS) -->
+  <!-- A container to hold the large header image (defined in CSS layout) -->
   <div class="header-image"></div>
 
   <!-- =========================================
        MAIN CONTENT SECTION
        ========================================= -->
-  <!-- Section container for the central page content -->
   <section class="middle">
-    <!-- Main heading for the welcome message -->
     <h1>Welcome to RAMBUCONNECT</h1>
-    
-    <!-- Paragraphs describing the project/content -->
-    <p>This is a simple school-level website made using HTML and CSS only. We have integrated the local logo image and header image, linking them with relative paths.</p>
+    <p>This is a simple school-level website made using HTML and CSS only. I have integrated the local logo image and optimized the configuration to align the navigation menu perfectly center.</p>
     <p>All CSS properties have detailed comments so you can easily change values like colors, spacing, and sizes to experiment for your project. You can write your project details, school information, or any basic content here.</p>
   </section>
 
   <!-- =========================================
        FOOTER SECTION
        ========================================= -->
-  <!-- Footer area at the bottom of the page -->
   <footer>
     A project by Amit Lijo, Class XII
   </footer>
